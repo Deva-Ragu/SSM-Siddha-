@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Sanjeevi Siddha</title>
+  <meta name="description" content="Create your Sanjeevi account to save your preferences and track orders.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">SANJEEVI<span>.</span></a>
+        
+        <nav class="nav-main" id="nav-main">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="products.html" class="nav-link">Products</a>
+          <a href="quiz.html" class="nav-link">Hair Quiz</a>
+          <a href="how-it-works.html" class="nav-link">How It Works</a>
+          <a href="ingredients.html" class="nav-link">Ingredients</a>
+          <a href="reviews.html" class="nav-link">Reviews</a>
+          <a href="about.html" class="nav-link">About</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <a href="register.html" class="btn btn-ghost">Sign In</a>
+          <a href="quiz.html" class="btn btn-primary">Take Quiz</a>
+          
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Register Section -->
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="form-section">
+        <div class="form-info">
+          <h2>Join the Sanjeevi Family</h2>
+          <p>
+            Create an account to save your quiz results, track orders, and get personalized product recommendations.
+          </p>
+          
+          <div class="contact-details" style="margin-top: 2rem;">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+919524266618">+91 95242 66618</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:Srisanjeevisiddhamarundhagam@gmail.com">Srisanjeevisiddhamarundhagam@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-container">
+          <h3>Create Your Account</h3>
+          
+          <form id="register-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="first-name">First Name</label>
+                <input type="text" id="first-name" class="form-input" placeholder="Enter your first name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="last-name">Last Name</label>
+                <input type="text" id="last-name" class="form-input" placeholder="Enter your last name" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="password">Password</label>
+              <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox" required>
+                <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox">
+                <span>Subscribe to receive exclusive offers and hair care tips</span>
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Create Account</button>
+          </form>
+          
+          <p class="text-center mt-md text-muted">
+            Already have an account? <a href="#" style="color: var(--forest-green); font-weight: 500;">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 Sri Sanjeevi Siddha Marundhagam. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

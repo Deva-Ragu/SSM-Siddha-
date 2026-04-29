@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Care Assessment</title>
+    <style>
+        body {
+            background-color: #F5F0E8;
+            font-family: 'Georgia', serif;
+            color: #1F3A2E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--light-gray);
+  transition: all var(--transition-base);
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--forest-green);
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--terracotta);
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--terracotta);
+  transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--forest-green);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.nav-icon:hover {
+  background-color: var(--light-gray);
+}
+
+.nav-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--charcoal);
+}
+
+.cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--terracotta);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Menu */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.mobile-toggle span {
+  width: 24px;
+  height: 2px;
+  background-color: var(--charcoal);
+  transition: all var(--transition-fast);
+}
+
+@media (max-width: 968px) {
+  .nav-main {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: var(--cream);
+    flex-direction: column;
+    padding: var(--space-lg);
+    gap: var(--space-md);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+  
+  .nav-main.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+}
+
+        
+
+
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: #F5F0E8;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Progress Section */
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: #e1ddd6;
+            margin-bottom: 30px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #1F3A2E;
+            width: 16.6%;
+            transition: width 0.4s ease;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            min-height: 3em;
+        }
+
+        /* Options */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-box {
+            background-color: #F5F0E8;
+            border: 1px solid #1F3A2E;
+            border-radius: 12px; /* Smooth rounded corners */
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .option-box:hover {
+            background-color: #ece7df;
+        }
+
+        .option-box.selected {
+            background-color: #1F3A2E;
+            color: #F5F0E8;
+        }
+
+        /* Error Message */
+        #error-msg {
+            color: #a34e4e;
+            font-size: 13px;
+            height: 20px;
+            margin-bottom: 10px;
+            visibility: hidden;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #1F3A2E;
+            color: #F5F0E8;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: #1F3A2E;
+            border: 1px solid #1F3A2E;
+        }
+    </style>
+</head>
+<body>
+      <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+       <img src="logo.png.png" alt="logo"width="100px">
+        
+        <nav class="nav-main" id="nav-main">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="products.html" class="nav-link active">Products</a>
+          <a href="quiz.html" class="nav-link">Hair Quiz</a>
+          <a href="how-it-works.html" class="nav-link">How It Works</a>
+          <a href="ingredients.html" class="nav-link">Ingredients</a>
+          <a href="reviews.html" class="nav-link">Reviews</a>
+          <a href="about.html" class="nav-link">About</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <a href="register.html" class="btn btn-ghost">Sign In</a>
+          <a href="quiz.html" class="btn btn-primary">Take Quiz</a>
+          
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+   <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Products</span>
+      </nav>
+
+<div class="container">
+    <div class="progress-info">
+        <span id="step-text">Question 1 of 6</span>
+        <span id="percent-text">16%</span>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+
+    <h2 id="question-title">What is your primary hair concern?</h2>
+
+    <div id="error-msg">Please select an option to continue</div>
+
+    <div class="options-grid" id="options-container">
+        <!-- Options injected via JavaScript -->
+    </div>
+
+    <div class="nav-buttons">
+        <button class="btn btn-back" id="backBtn" onclick="prevQuestion()" disabled>Back</button>
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            q: "What is your primary hair concern?",
+            options: ["Hair fall", "Dandruff", "Greying", "Dry / damaged", "Thinning"]
+        },
+        {
+            q: "How would you describe your scalp?",
+            options: ["Oily", "Dry", "Sensitive", "Balanced", "Itchy"]
+        },
+        {
+            q: "How often do you wash your hair?",
+            options: ["Daily", "Every other day", "2–3× a week", "Once a week"]
+        },
+        {
+            q: "What is your hair texture?",
+            options: ["Straight", "Wavy", "Curly", "Coily"]
+        },
+        {
+            q: "How much time do you spend outdoors?",
+            options: ["< 1 hr/day", "1–3 hrs", "3–6 hrs", "All day"]
+        },
+        {
+            q: "How much time do you spend outdoors? (Environmental exposure)",
+            options: ["< 1 hr/day", "1–3 hrs", "3–6 hrs", "All day"]
+        }
+    ];
+
+    let currentStep = 0;
+    let selections = new Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const question = questions[currentStep];
+        document.getElementById("question-title").innerText = question.q;
+        document.getElementById("step-text").innerText = `Question ${currentStep + 1} of ${questions.length}`;
+        
+        const progressPercent = ((currentStep + 1) / questions.length) * 100;
+        document.getElementById("bar").style.width = progressPercent + "%";
+        document.getElementById("percent-text").innerText = Math.round(progressPercent) + "%";
+
+        const container = document.getElementById("options-container");
+        container.innerHTML = "";
+
+        question.options.forEach(opt => {
+            const div = document.createElement("div");
+            div.className = "option-box";
+            if (selections[currentStep] === opt) div.classList.add("selected");
+            div.innerText = opt;
+            div.onclick = () => selectOption(div, opt);
+            container.appendChild(div);
+        });
+
+        document.getElementById("backBtn").disabled = currentStep === 0;
+        document.getElementById("nextBtn").innerText = currentStep === questions.length - 1 ? "Finish" : "Next";
+        document.getElementById("error-msg").style.visibility = "hidden";
+    }
+
+    function selectOption(element, val) {
+        const allOptions = document.querySelectorAll(".option-box");
+        allOptions.forEach(box => box.classList.remove("selected"));
+        element.classList.add("selected");
+        selections[currentStep] = val;
+        document.getElementById("error-msg").style.visibility = "hidden";
+    }
+
+    function nextQuestion() {
+        if (!selections[currentStep]) {
+            document.getElementById("error-msg").style.visibility = "visible";
+            return;
+        }
+
+        if (currentStep < questions.length - 1) {
+            currentStep++;
+            loadQuestion();
+        } else {
+            alert("Thank you! Generating your 3D Hair Profile...");
+        }
+    }
+
+    function prevQuestion() {
+        if (currentStep > 0) {
+            currentStep--;
+            loadQuestion();
+        }
+    }
+
+    // Initial Load
+    loadQuestion();
+</script>
+
+</body>
+</html>
